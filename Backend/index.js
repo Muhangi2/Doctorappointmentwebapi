@@ -6,6 +6,7 @@ import cookieParser from "cookie-parser";
 import { authrouter } from "./routes/auth.js";
 import { userrouter } from "./routes/usersroute.js";
 import { doctorrouter } from "./routes/doctorsroute.js";
+import { reviewrouter } from "./routes/reviewsroute.js";
 
 dotenv.config();
 const app = express();
@@ -46,6 +47,7 @@ const connecttodb = async () => {
 app.use("/auth", authrouter);
 app.use("/user", userrouter);
 app.use("/doctor", doctorrouter);
+app.use("/reviews", reviewrouter);
 
 app.listen(port, () => {
   connecttodb();

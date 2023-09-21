@@ -11,6 +11,7 @@ export const getallreviews = async (req, res) => {
     console.log(error.message);
   }
 };
+
 export const addreviews = async (req, res) => {
   if (!req.body.doctor) req.body.doctor = req.params.doctorId;
   if (!req.body.user) req.body.user = req.userId;

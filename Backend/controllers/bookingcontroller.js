@@ -1,6 +1,6 @@
-import Usermodel from "../models/Usermodel";
-import Doctormodel from "../models/Doctormodel";
-import Bookingmodel from "../models/Bookingmodel";
+import Usermodel from "../models/Usermodel.js";
+import Doctormodel from "../models/Doctormodel.js";
+import Bookingmodel from "../models/Bookingmodel.js";
 
 export const getbookings = async (req, res) => {
   try {

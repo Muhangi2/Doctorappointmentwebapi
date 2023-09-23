@@ -6,6 +6,7 @@ const UserSchema = new mongoose.Schema({
   name: { type: String, required: true },
   phone: { type: Number },
   photo: { type: String },
+  reviews: [{ type: mongoose.Types.ObjectId, ref: "Review" }],
   role: {
     type: String,
     enum: ["patient", "admin"],

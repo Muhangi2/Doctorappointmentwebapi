@@ -7,10 +7,12 @@ import {
 } from "../controllers/doctorcontroller.js";
 import { reviewrouter } from "./reviewsroute.js";
 import { authenticate, restrict } from "../auth/verifytoken.js";
+import { bookingrouter } from "./booking.js";
 
 export const doctorrouter = express.Router();
 //nested routes
 doctorrouter.use("/:doctorId/reviews", reviewrouter);
+doctorrouter.use("/:doctorId/bookings", bookingrouter);
 
 doctorrouter.get("/alldoctors", getalldoctors);
 doctorrouter.put(

@@ -5,7 +5,7 @@ import Bookingmodel from "../models/Bookingmodel.js";
 export const getbookings = async (req, res) => {
   try {
     const bookings = await Bookingmodel.find({});
-    res.status(200).json({ message: "Successfull", data: bookings });
+    res.status(200).json({ message: "Successfully", data: bookings });
   } catch (error) {
     res.status(500).json({ success: false, message: error.message });
     console.log(error);

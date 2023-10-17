@@ -23,6 +23,9 @@
   .text_para{
     @apply text-[18px] leading-[30px] font-[400] text-textColor mt-[18px]
   }
+  .header{
+    @apply bg-orange-500 bg-no-repeat bg-cover bg-center w-full h-[80px] leading-[100px]
+  }
 
 }
 @media only  screen  and (max-width: 1024px){

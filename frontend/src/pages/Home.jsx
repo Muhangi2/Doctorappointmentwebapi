@@ -1,9 +1,15 @@
-import React from 'react'
+import React from "react";
 
 const Home = () => {
   return (
-    <div>Home</div>
-  )
-}
+    <>
+      {/* =====hero_section=== */}
+      <section className="hero_section pt-[60px] 2xl:h-[800px]">
 
-export default Home
+        
+      </section>
+    </>
+  );
+};
+
+export default Home;

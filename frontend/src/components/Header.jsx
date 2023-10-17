@@ -1,6 +1,9 @@
 import React from "react";
 import { useEffect, useRef } from "react";
 import { NavLink, Link } from "react-router-dom";
+import { BiMenu } from "react-icons/bi"; // Import the BiMenu icon
+import download2 from "../assets/images/download2.jpeg";
+
 const Header = () => {
   const navLinks = [
     {
@@ -20,17 +23,39 @@ const Header = () => {
       display: "Contact",
     },
   ];
+  const headerRef = useRef(null);
+  const menuRef = useRef(null);
+
+  const handleStickyHeader = () => {
+    window.addEventListener("scroll", () => {
+      if (
+        document.body.scrollTop > 80 ||
+        document.documentElement.scrollTop > 80
+      ) {
+        headerRef.current.classList.add("sticky-header");
+      } else {
+        headerRef.current.classList.remove("sticky-header");
+      }
+    });
+  };
+
+  useEffect(() => {
+    handleStickyHeader();
+    return () => window.removeEventListener("scroll", handleStickyHeader);
+  });
+
+  const toggleMenu = () => menuRef.current.classList.toggle("show_menu");
   return (
-    <header className="header flex items-center">
-      <div className="bg-orange-300 container">
+    <header className="header flex items-center mt-2" ref={headerRef}>
+      <div className="container">
         <div className="flex  items-center justify-between">
-          <div className="bg-purple-300">
-            hey
+          <div className="">
+            Homehospital
             <img src="" alt="" />
           </div>
           {/* =======menu=========== */}
-          <div className="navigation">
-            <ul className="bg-green-500 menu flex items-center gap-[2.7rem]">
+          <div className="navigation" ref={menuRef} onClick={toggleMenu}>
+            <ul className="menu flex items-center gap-[2.7rem]">
               {navLinks.map((Link, index) => (
                 <li key={index}>
                   <NavLink
@@ -48,19 +73,26 @@ const Header = () => {
           </div>
           {/* =======right menu=========== */}
           <div className="flex items-center gap-4">
-            <div>
+            <div className="hidden">
               <Link to="/">
-                <figure className="w-[35px] h-[35px] rounded-full ">
-                  <img src="" className="w-full rounded-full" />
+                <figure className="w-[35px] h-[35px] rounded-full cursor-pointer ">
+                  <img
+                    src={download2}
+                    className="w-full rounded-full object-cover"
+                    alt=""
+                  />
                 </figure>
               </Link>
             </div>
+
             <Link to="/login">
-              <button className="bg-primaryColor py-2 px-6 text-white font-[600] ">
-                {" "}
+              <button className="bg-primaryColor  py-2 px-6 text-white font-[600] rounded-[50px] h-[44px] flex items-center ">
                 Login
               </button>
             </Link>
+            <span className="md:hidden" onClick={toggleMenu}>
+              <BiMenu className="w-h h-6 cursor-pointer" />
+            </span>
           </div>
         </div>
       </div>
